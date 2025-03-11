@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+// This file is compatible with Java 21 without changes
+// Java 21 is backward compatible with Java 8 language features used here
 @WebServlet(urlPatterns = "/MyAsyncServlet", asyncSupported = true)
 public class MyAsyncServlet extends HttpServlet {
 
@@ -32,6 +34,8 @@ public class MyAsyncServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AsyncContext asyncContext = request.startAsync();
 
+        // Anonymous inner class implementation is still valid in Java 21
+        // Could be replaced with lambda in future refactoring if desired
         asyncContext.addListener(new AsyncListener() {
             @Override
             public void onComplete(AsyncEvent event) throws IOException {
@@ -58,6 +62,7 @@ public class MyAsyncServlet extends HttpServlet {
         executor.submit(new MyAsyncService(asyncContext));
     }
 
+    // Inner class implementation remains compatible with Java 21
     class MyAsyncService implements Runnable {
 
         AsyncContext asyncContext;
