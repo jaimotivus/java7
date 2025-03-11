@@ -7,6 +7,11 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<!-- Added properties section to specify Java 21 -->
+	<properties>
+		<maven.compiler.release>21</maven.compiler.release>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
@@ -15,6 +20,20 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<!-- Added build section with maven-compiler-plugin configuration for Java 21 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<release>21</release>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<name>Java EE 7 Sample: servlet - async-servlet</name>
 </project>
